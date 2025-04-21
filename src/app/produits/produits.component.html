@@ -1,0 +1,39 @@
+<div class="container">
+  <div class="card shadow mb-4">
+    <div class="card-body">
+      <table class="table table-striped">
+        @if(produits?.length !=0){
+          <thead>
+          <tr>
+            <th>N°</th><th>Id</th><th>Nom</th> <th>Prix</th> <th>Date Création</th><th>Catégorie</th>
+          </tr>
+          </thead>
+        }
+
+        @for (produit of produits; track produit.idProduit; let index = $index; let nbr=$count; let first=$first; let last=$last)
+        {
+
+          <tbody>
+            <tr>
+              <td>{{index+1}}</td>
+              <td>{{produit.idProduit}}</td>
+              <td>{{produit.nomProduit}}</td>
+              <td>{{produit.prixProduit}}</td>
+              <td>{{produit.dateCreation | date:'dd/MM/yyyy'}}</td>
+              <td>{{produit.categorie?.nomCat}}</td>
+              @if(authService.isAdmin()) {
+                <td><a class="btn btn-danger" (click)="supprimerProduit(produit)">Supprimer</a></td>
+                <td><a class="btn btn-success" [routerLink]="['/updateProduit',produit.idProduit]">Modifier</a></td>
+              }
+                </tr>
+          </tbody>
+         <!-- @if(last)
+          { <h4>Nombres : {{nbr}}</h4>}-->
+        }
+        @empty {
+          <h1>Aucun produit trouvé !</h1>
+        }
+      </table>
+    </div>
+  </div>
+</div>
