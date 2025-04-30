@@ -8,6 +8,8 @@ import {ListeCategoriesComponent} from "./liste-categories/liste-categories.comp
 import {LoginComponent} from "./login/login.component";
 import {ForbiddenComponent} from "./forbidden/forbidden.component";
 import {produitGuard} from "./produit.guard";
+import {RegisterComponent} from "./register/register.component";
+import {VerifEmailComponent} from "./verif-email/verif-email.component";
 
 export const routes: Routes = [
   {path: "add-produit", component : AddProduitComponent, canActivate:[produitGuard]},
@@ -17,6 +19,8 @@ export const routes: Routes = [
   {path: "produits", component : ProduitsComponent},
   {path: "rechercheParCategorie", component : RechercheParCategorieComponent},
   {path: "rechercheParNom", component : RechercheParNomComponent},
+  {path:'register',component:RegisterComponent},
   {path: "updateProduit/:id", component: UpdateProduitComponent},
+  { path: 'verifEmail', component: VerifEmailComponent },
   {path: "", redirectTo: "produits", pathMatch: "full"}
 ];
